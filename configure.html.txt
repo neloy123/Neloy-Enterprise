@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configure Your Product | Neloy Enterprise</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f7f4;color:#202722;}
+button{font:inherit;}
+.topbar{height:74px;border-bottom:1px solid #ddd;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;}
+.logo{font-size:21px;font-weight:700;letter-spacing:1px;text-decoration:none;color:inherit;}
+.logo small{display:block;font-size:8px;letter-spacing:3px;color:#777;margin-top:2px;}
+.top-right{font-size:13px;color:#555;}
+.configurator{min-height:calc(100vh - 74px);}
+.config-head{background:#fff;border-bottom:1px solid #ddd;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;}
+.back{border:0;background:none;cursor:pointer;color:#555;font-size:14px;text-decoration:none;}
+.step{font-size:12px;color:#777;}
+.config-layout{display:grid;grid-template-columns:1fr 420px;min-height:650px;}
+.preview{background:#e9e9e4;display:flex;align-items:center;justify-content:center;padding:60px;}
+.window-preview{width:min(520px,80%);aspect-ratio:1/1;background:#d9ddd9;border:12px solid #555;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.12);}
+.window-preview:before{content:"";position:absolute;left:50%;top:0;width:8px;height:100%;background:#555;transform:translateX(-50%);}
+.window-preview:after{content:"";position:absolute;left:0;top:50%;width:100%;height:8px;background:#555;transform:translateY(-50%);}
+.glass{position:absolute;inset:12px;background:linear-gradient(135deg,rgba(255,255,255,.65),rgba(170,200,205,.4));}
+.options{background:#fff;padding:45px 38px;overflow:auto;}
+.options h2{font-size:30px;font-weight:400;margin-bottom:8px;}
+.options-sub{font-size:13px;color:#777;margin-bottom:30px;}
+.option-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;}
+.option-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;}
+.option{border:1px solid #d7d9d5;background:white;padding:14px;cursor:pointer;text-align:left;transition:.2s;}
+.option:hover{border-color:#555;}
+.option.active{border:2px solid #1e2923;padding:13px;}
+.option strong{display:block;font-size:14px;margin-bottom:3px;}
+.option span{font-size:11px;color:#777;}
+.measurements{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:25px;}
+.measurements label{font-size:11px;color:#777;}
+.measurements input{width:100%;margin-top:5px;border:1px solid #d6d8d4;padding:13px;font-size:15px;outline:none;}
+.measurements input:focus{border-color:#333;}
+.price-box{background:#f2f4ef;padding:20px;margin-top:15px;}
+.price-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#777;}
+.price{font-size:31px;margin-top:4px;}
+.continue{width:100%;border:0;background:#1e2923;color:white;padding:17px;margin-top:15px;cursor:pointer;font-weight:600;text-align:center;display:block;text-decoration:none;}
+.whatsapp{display:block;width:100%;text-align:center;background:#e6eee6;color:#1e2923;padding:14px;margin-top:10px;font-size:13px;text-decoration:none;font-weight:600;}
+@media(max-width:1000px){.config-layout{grid-template-columns:1fr;}.preview{min-height:450px;}}
+@media(max-width:600px){.config-layout{display:block;}.preview{min-height:350px;padding:40px;}.options{padding:30px 20px;}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="logo">NELOY<small>ENTERPRISE</small></a>
+  <div class="top-right">Custom Design & Configuration</div>
+</header>
+
+<section class="configurator" id="configurator">
+  <div class="config-head">
+    <a href="index.html" class="back">← Back to products</a>
+    <div class="step">Step 1 of 5</div>
+  </div>
+
+  <div class="config-layout">
+    <div class="preview">
+      <div class="window-preview">
+        <div class="glass"></div>
+      </div>
+    </div>
+
+    <div class="options">
+      <h2 id="productTitle">Configure your product</h2>
+      <div class="options-sub" id="productSub">Customize dimensions, materials and features for your space.</div>
+
+      <div class="option-title" id="typeLabel">Design Type</div>
+      <div class="option-row" id="typeRow">
+        <button class="option active" onclick="selectOption(this)">
+          <strong>Standard Style</strong>
+          <span>Default option</span>
+        </button>
+        <button class="option" onclick="selectOption(this)">
+          <strong>Custom Style</strong>
+          <span>Alternative build</span>
+        </button>
+      </div>
+
+      <div class="option-title">Dimensions</div>
+      <div class="measurements">
+        <label>Width (ft)
+          <input id="width" type="number" value="4" min="1" step=".1" oninput="calculate()">
+        </label>
+        <label>Height (ft)
+          <input id="height" type="number" value="4" min="1" step=".1" oninput="calculate()">
+        </label>
+      </div>
+
+      <div class="option-title" id="mat1Label">Material Grade</div>
+      <div class="option-row" id="mat1Row">
+        <button class="option active" onclick="selectOption(this)">
+          <strong>Standard Grade</strong>
+          <span>Regular profile</span>
+        </button>
+        <button class="option" onclick="selectOption(this)">
+          <strong>Premium Grade</strong>
+          <span>Heavy-duty profile</span>
+        </button>
+      </div>
+
+      <div class="option-title" id="mat2Label">Surface / Glass</div>
+      <div class="option-row" id="mat2Row">
+        <button class="option active" onclick="selectOption(this)">
+          <strong>Standard Finish</strong>
+          <span>Clear standard finish</span>
+        </button>
+        <button class="option" onclick="selectOption(this)">
+          <strong>Thicker Build</strong>
+          <span>Reinforced finish</span>
+        </button>
+      </div>
+
+      <div class="price-box">
+        <div class="price-label">Estimated price</div>
+        <div class="price" id="price">৳ 0</div>
+      </div>
+
+      <button class="continue" onclick="proceedCheckout()">Confirm & Order →</button>
+      <a href="#" id="whatsappBtn" target="_blank" class="whatsapp">Ask Neloy Enterprise on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<script>
+// Get product slug from URL parameters (e.g. configure.html?product=doors)
+const urlParams = new URLSearchParams(window.location.search);
+const productKey = urlParams.get('product') || 'windows';
+
+// Product configurations data mapping
+const productConfigData = {
+  windows: {
+    title: "Configure your window",
+    sub: "Start with basic dimensions and window type.",
+    typeLabel: "Window type",
+    types: [["Sliding Window", "Two sliding shutters"], ["Fixed Window", "Fixed glass panel"]],
+    mat1Label: "Aluminium Profile",
+    mat1: [["KAI", "Standard profile"], ["NEO", "Premium profile"]],
+    mat2Label: "Glass Thickness",
+    mat2: [["3.5 mm Clear", "Standard clear glass"], ["5 mm Clear", "Thicker glass"]],
+    baseRate: 450
+  },
+  doors: {
+    title: "Configure your door",
+    sub: "Select door configuration and frame quality.",
+    typeLabel: "Door Mechanism",
+    types: [["Single Sliding", "Single panel sliding"], ["Hinged Door", "Standard swing door"]],
+    mat1Label: "Frame Material",
+    mat1: [["Aluminium Frame", "Lightweight & sturdy"], ["Heavy Wood/Melamine", "Solid structure"]],
+    mat2Label: "Panel Type",
+    mat2: [["Glass Panel", "Translucent light"], ["Solid Panel", "Full privacy"]],
+    baseRate: 550
+  },
+  bookshelves: {
+    title: "Configure your bookshelf",
+    sub: "Build custom shelving layouts for your wall.",
+    typeLabel: "Shelving Layout",
+    types: [["Open Rack", "Full open shelves"], ["Cabinet Combo", "Shelves with lower cabinet"]],
+    mat1Label: "Wood Finish",
+    mat1: [["Melamine Board", "Smooth laminated finish"], ["Premium Board", "Scratch-resistant texture"]],
+    mat2Label: "Back Panel",
+    mat2: [["Standard Back", "Match body finish"], ["Reinforced Back", "Extra durability"]],
+    baseRate: 380
+  },
+  cornershelves: {
+    title: "Configure corner shelf",
+    sub: "Maximize awkward corner spaces efficiently.",
+    typeLabel: "Corner Shape",
+    types: [["90-Degree L-Shape", "Standard corner fit"], ["Diagonal Floating", "Sleek floating look"]],
+    mat1Label: "Material Quality",
+    mat1: [["Standard Melamine", "Standard thickness"], ["Heavy Duty", "Thick load bearing"]],
+    mat2Label: "Edge Finish",
+    mat2: [["PVC Banding", "Clean sealed edges"], ["Aluminum Edge", "Metal framed look"]],
+    baseRate: 350
+  },
+  melamine: {
+    title: "Configure melamine furniture",
+    sub: "Custom cabinets, desks, and storage units.",
+    typeLabel: "Furniture Style",
+    types: [["Custom Desk / Table", "Workstation setup"], ["Storage Cabinet", "Multi-shelf unit"]],
+    mat1Label: "Board Grade",
+    mat1: [["Standard Melamine", "Standard density"], ["Water-Resistant", "Moisture protected"]],
+    mat2Label: "Hardware",
+    mat2: [["Standard Hinges", "Standard fittings"], ["Soft-Close", "Hydraulic soft-close"]],
+    baseRate: 400
+  },
+  glass: {
+    title: "Configure glass & mirror",
+    sub: "Custom cut glass panels, table tops and mirrors.",
+    typeLabel: "Glass Selection",
+    types: [["Clear Glass", "Standard window/table glass"], ["Mirror Panel", "High reflectivity mirror"]],
+    mat1Label: "Thickness",
+    mat1: [["4 mm", "Standard light use"], ["6 mm", "Heavy duty use"]],
+    mat2Label: "Edge Polish",
+    mat2: [["Flat Polished", "Smooth safe edges"], ["Beveled Edge", "Decorative styled edge"]],
+    baseRate: 300
+  },
+  partition: {
+    title: "Configure aluminium partition",
+    sub: "Divider solutions for homes, offices, and shops.",
+    typeLabel: "Partition Type",
+    types: [["Full Glass Partition", "Maximum natural light"], ["Half Solid / Half Glass", "Privacy lower half"]],
+    mat1Label: "Frame Profile",
+    mat1: [["Standard Section", "Light commercial"], ["Heavy Section", "Commercial rigid frame"]],
+    mat2Label: "Door Included",
+    mat2: [["Without Door", "Open walkthrough"], ["With Matching Door", "Integrated entry door"]],
+    baseRate: 500
+  },
+  decor: {
+    title: "Configure wall décor",
+    sub: "Custom wall paneling and aesthetic slats.",
+    typeLabel: "Décor Style",
+    types: [["Fluted Wall Panels", "Modern acoustic/slat look"], ["Wooden Wall Accents", "Warm wooden finish"]],
+    mat1Label: "Material Type",
+    mat1: [["PVC / Charcoal", "Waterproof composite"], ["Wood Veneer", "Natural wood grain"]],
+    mat2Label: "Coverage Type",
+    mat2: [["Standard Panels", "Per piece calculation"], ["Full Wall Coverage", "Full room sizing"]],
+    baseRate: 320
+  }
+};
+
+// Load configurations dynamically based on URL parameter
+function initConfigurator() {
+  const data = productConfigData[productKey] || productConfigData.windows;
+  
+  document.getElementById("productTitle").innerText = data.title;
+  document.getElementById("productSub").innerText = data.sub;
+  
+  // Render Dynamic Types
+  document.getElementById("typeLabel").innerText = data.typeLabel;
+  let typeHTML = "";
+  data.types.forEach((t, i) => {
+    typeHTML += `<button class="option ${i===0?'active':''}" onclick="selectOption(this)"><strong>${t[0]}</strong><span>${t[1]}</span></button>`;
+  });
+  document.getElementById("typeRow").innerHTML = typeHTML;
+
+  // Render Dynamic Material 1
+  document.getElementById("mat1Label").innerText = data.mat1Label;
+  let mat1HTML = "";
+  data.mat1.forEach((m, i) => {
+    mat1HTML += `<button class="option ${i===0?'active':''}" onclick="selectOption(this)"><strong>${m[0]}</strong><span>${m[1]}</span></button>`;
+  });
+  document.getElementById("mat1Row").innerHTML = mat1HTML;
+
+  // Render Dynamic Material 2
+  document.getElementById("mat2Label").innerText = data.mat2Label;
+  let mat2HTML = "";
+  data.mat2.forEach((m, i) => {
+    mat2HTML += `<button class="option ${i===0?'active':''}" onclick="selectOption(this)"><strong>${m[0]}</strong><span>${m[1]}</span></button>`;
+  });
+  document.getElementById("mat2Row").innerHTML = mat2HTML;
+
+  calculate();
+}
+
+function selectOption(element){
+  const parent = element.parentElement;
+  parent.querySelectorAll(".option").forEach(item => { item.classList.remove("active"); });
+  element.classList.add("active");
+  calculate();
+}
+
+function calculate(){
+  const width = parseFloat(document.getElementById("width").value) || 0;
+  const height = parseFloat(document.getElementById("height").value) || 0;
+  const data = productConfigData[productKey] || productConfigData.windows;
+  
+  // Active modifier check
+  let multiplier = 1;
+  const activeOptions = document.querySelectorAll(".option.active");
+  activeOptions.forEach(opt => {
+    const text = opt.querySelector("strong").innerText.toLowerCase();
+    if(text.includes("neo") || text.includes("premium") || text.includes("heavy") || text.includes("cabinet") || text.includes("5 mm") || text.includes("6 mm") || text.includes("with door")) {
+      multiplier += 0.25;
+    }
+  });
+
+  const area = width * height;
+  const total = area * data.baseRate * multiplier + 1000; // Base fitting cost inclusion
+
+  document.getElementById("price").innerText = "৳ " + Math.round(total).toLocaleString("en-BD");
+  
+  // Update WhatsApp link with active choices
+  updateWhatsAppLink(width, height, total);
+}
+
+function updateWhatsAppLink(w, h, total) {
+  const title = document.getElementById("productTitle").innerText;
+  let details = [];
+  document.querySelectorAll(".option.active").forEach(opt => {
+    details.push(opt.querySelector("strong").innerText);
+  });
+  
+  const msg = `Hello Neloy Enterprise, I want to order/inquire about a custom build:\n\n*Product:* ${title}\n*Dimensions:* ${w}ft x ${h}ft\n*Specifications:* ${details.join(", ")}\n*Estimated Price:* ৳ ${Math.round(total).toLocaleString("en-BD")}\n\nPlease confirm availability and final quotation.`;
+  
+  const encodedMsg = encodeURIComponent(msg);
+  document.getElementById("whatsappBtn").href = `https://wa.me/8801722884496?text=${encodedMsg}`;
+}
+
+function proceedCheckout() {
+  const total = document.getElementById("price").innerText;
+  const title = document.getElementById("productTitle").innerText;
+  alert(`Thank you! Your configuration for "${title}" with an estimated price of ${total} is ready.\n\nYou will now be redirected to WhatsApp to complete your order with Neloy Enterprise.`);
+  window.location.href = document.getElementById("whatsappBtn").href;
+}
+
+// Run init on page load
+window.onload = initConfigurator;
+</script>
+
+</body>
+</html>

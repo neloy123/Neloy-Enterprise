@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neloy Enterprise | Custom Design & Configuration</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f7f4;color:#202722;}
+.topbar{height:74px;border-bottom:1px solid #ddd;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;}
+.logo{font-size:21px;font-weight:700;letter-spacing:1px;}
+.logo small{display:block;font-size:8px;letter-spacing:3px;color:#777;margin-top:2px;}
+.top-right{font-size:13px;color:#555;}
+.container{width:min(1240px,92%);margin:auto;}
+.intro{text-align:center;padding:65px 0 42px;}
+.intro-label{text-transform:uppercase;letter-spacing:3px;font-size:11px;color:#7b847e;margin-bottom:14px;}
+.intro h1{font-size:clamp(36px,5vw,58px);font-weight:400;letter-spacing:-1.5px;margin-bottom:16px;}
+.intro p{color:#707873;max-width:600px;margin:auto;font-size:15px;}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:80px;}
+.product{background:#fff;border:1px solid #e1e2dd;cursor:pointer;transition:.25s;overflow:hidden;text-decoration:none;color:inherit;display:block;}
+.product:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(0,0,0,.08);}
+.product-image{height:270px;overflow:hidden;background:#ddd;}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.45s;}
+.product:hover img{transform:scale(1.04);}
+.product-info{padding:20px 21px 22px;}
+.product-number{font-size:10px;letter-spacing:2px;color:#999;margin-bottom:7px;}
+.product h2{font-size:21px;font-weight:500;margin-bottom:6px;}
+.product p{color:#737b76;font-size:13px;line-height:1.5;}
+.configure{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:13px;font-weight:600;}
+.arrow{font-size:20px;}
+@media(max-width:1000px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.product-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">NELOY<small>ENTERPRISE</small></div>
+  <div class="top-right">Custom Design & Configuration</div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="container">
+      <div class="intro-label">Neloy Enterprise</div>
+      <h1>What would you like to configure?</h1>
+      <p>Choose a product below and create it according to your space, measurements and preferred materials.</p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="product-grid">
+      <a class="product" href="configure.html?product=windows">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="Windows"></div>
+        <div class="product-info">
+          <div class="product-number">01</div>
+          <h2>Windows</h2>
+          <p>Sliding, fixed and custom aluminium windows.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=doors">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Doors"></div>
+        <div class="product-info">
+          <div class="product-number">02</div>
+          <h2>Doors</h2>
+          <p>Glass, aluminium and sliding doors.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=bookshelves">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=900&q=85" alt="Bookshelves"></div>
+        <div class="product-info">
+          <div class="product-number">03</div>
+          <h2>Bookshelves</h2>
+          <p>Custom shelves designed for your wall.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=cornershelves">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85" alt="Corner Shelves"></div>
+        <div class="product-info">
+          <div class="product-number">04</div>
+          <h2>Corner Shelves</h2>
+          <p>Smart storage for unused corners.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=melamine">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=900&q=85" alt="Melamine Furniture"></div>
+        <div class="product-info">
+          <div class="product-number">05</div>
+          <h2>Melamine Furniture</h2>
+          <p>Practical custom furniture and storage.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=glass">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85" alt="Glass & Mirror"></div>
+        <div class="product-info">
+          <div class="product-number">06</div>
+          <h2>Glass & Mirror</h2>
+          <p>Mirrors, glass panels and décor.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=partition">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="Aluminium Partition"></div>
+        <div class="product-info">
+          <div class="product-number">07</div>
+          <h2>Aluminium Partition</h2>
+          <p>Clean partitions for home and shop.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+
+      <a class="product" href="configure.html?product=decor">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1618221710640-c0eaaa2adb49?auto=format&fit=crop&w=900&q=85" alt="Wall Décor"></div>
+        <div class="product-info">
+          <div class="product-number">08</div>
+          <h2>Wall Décor</h2>
+          <p>Custom wall solutions and small interiors.</p>
+          <div class="configure">Configure <span class="arrow">→</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
