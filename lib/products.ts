@@ -8,6 +8,7 @@ export const products = [
     materials: ['Aluminium', 'Glass', 'Mirror'],
     usage: 'Home & office openings',
     price: 'From ৳ 3,200',
+    basePrice: 850,
     image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -19,6 +20,7 @@ export const products = [
     materials: ['Aluminium', 'Glass'],
     usage: 'Entryways & office fronts',
     price: 'From ৳ 4,500',
+    basePrice: 1200,
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -30,6 +32,7 @@ export const products = [
     materials: ['Aluminium', 'Glass', 'Wood finish'],
     usage: 'Interior partitions',
     price: 'From ৳ 5,000',
+    basePrice: 1300,
     image: 'https://images.unsplash.com/photo-1583481237311-6d33a3f8d3be?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -41,6 +44,7 @@ export const products = [
     materials: ['Glass', 'Aluminium'],
     usage: 'Office & shop interiors',
     price: 'From ৳ 6,000',
+    basePrice: 1400,
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -52,6 +56,7 @@ export const products = [
     materials: ['Mirror', 'Glass'],
     usage: 'Bathrooms & retail displays',
     price: 'From ৳ 2,200',
+    basePrice: 700,
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -63,6 +68,7 @@ export const products = [
     materials: ['Melamine Board', 'Hardboard', 'Aluminium'],
     usage: 'Living rooms & offices',
     price: 'From ৳ 4,000',
+    basePrice: 1000,
     image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -74,6 +80,7 @@ export const products = [
     materials: ['Melamine Board', 'Chipboard'],
     usage: 'Living rooms & compact spaces',
     price: 'From ৳ 2,700',
+    basePrice: 850,
     image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80'
   },
   {
@@ -85,6 +92,7 @@ export const products = [
     materials: ['Melamine Board', 'Hardboard', 'Chipboard'],
     usage: 'Storage, desks & display units',
     price: 'From ৳ 3,800',
+    basePrice: 1100,
     image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80'
   }
 ];
